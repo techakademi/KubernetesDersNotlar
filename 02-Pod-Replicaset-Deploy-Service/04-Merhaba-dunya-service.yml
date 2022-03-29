@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: Merhaba-dunya
+  name: merhaba-dunya-service
+spec:
+  ports:
+    - port: 3000
+  selector:
+    name: Merhaba-dunya
+  type: NodePort

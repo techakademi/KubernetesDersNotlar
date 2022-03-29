@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: merhaba-dunya-deploy
+  labels:
+    name: Merhaba-dunya
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: Merhaba-dunya
+  template:
+    metadata:
+      labels:
+        name: Merhaba-dunya
+    spec:
+      containers:
+      - image: techakademi/merhabadunya:1
+        name: merhaba-dunya

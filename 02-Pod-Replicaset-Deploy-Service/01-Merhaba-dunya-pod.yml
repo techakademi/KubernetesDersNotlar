@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: merhaba-dunya-pod
+spec:
+  containers:
+    - name: merhaba-dunya
+      image: techakademi/merhabadunya:1
