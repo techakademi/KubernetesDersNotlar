@@ -2,11 +2,10 @@
 
 # Kubernetes Dersler
 
-## 0. ETCD [ETCD Hakkında](https://github.com/techakademi/Kubernetes_Orkestrasyon/blob/main/00-Etcd/Etcd_Bolumu.md)
+## 0. ETCD [ETCD Hakkında](https://github.com/techakademi/KubernetesDersNotlar/blob/main/00-Etcd/Etcd_Bolumu.md)
 
-## 1. Ders [Giriş ve Kurulum](https://github.com/techakademi/Kubernetes_Orkestrasyon/tree/master/01-Kurulum)
+## 1. Ders [Giriş ve Kurulum](https://github.com/techakademi/KubernetesDersNotlar/tree/master/01-Kurulum)
 
-## 2. Ders [Pod, Replicaset, Deploy, Service](https://github.com/techakademi/Kubernetes_Orkestrasyon/tree/master/02-Pod-Replicaset-Deploy-Service)
+## 2. Ders [Pod, Replicaset, Deploy, Service](https://github.com/techakademi/KubernetesDersNotlar/tree/master/02-Pod-Replicaset-Deploy-Service)
 
-## 4. Ders [Nodeselector](https://github.com/techakademi/Kubernetes_Orkestrasyon/tree/master/02-Pod-Replicaset-Deploy-Service)
-"# KubernetesDersNotlar" 
+## 4. Ders [Nodeselector](https://github.com/techakademi/KubernetesDersNotlar/tree/master/04-Noedeselector)
