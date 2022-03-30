@@ -9,3 +9,5 @@
 ## 2. Ders [Pod, Replicaset, Deploy, Service](https://github.com/techakademi/KubernetesDersNotlar/tree/master/02-Pod-Replicaset-Deploy-Service)
 
 ## 4. Ders [Node Selector](https://github.com/techakademi/KubernetesDersNotlar/tree/main/04-Nodeselector)
+
+## 5. Ders [Daemonset](https://github.com/techakademi/KubernetesDersNotlar/tree/main/05-Daemonset)
