@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: loglama-podu
+  namespace: kube-system
+  labels:
+    app: loglama-podu
+spec:
+  selector:
+    matchLabels:
+      app: loglama-podu
+  template:
+    metadata:
+      labels:
+        app: loglama-podu
+    spec:
+      containers:
+      - name: loglama-podu
+        image: alpine
+        args: 
+        - /bin/sh
+        - -c
+        - >
+          i=0;
+          while true;
+          do
+            echo "$i: $(date) $HOSTNAME" >> /var/log/daemonset_pod.log;
+            i=$((i+1));
+            sleep 10;
+          done
+        volumeMounts:
+        - name: varlog
+          mountPath: /var/log
+      volumes:
+      - name: varlog
+        hostPath:
+          path: /var/log
