@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: hiz-test
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: hiz-test
+            image: techakademi/hiztest:1
+            command: ["speedtest"]
+            args: ["--simple"]
+          restartPolicy: OnFailure 
+        

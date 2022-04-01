@@ -1,0 +1,15 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: dns-kontrol
+spec:
+  template:
+    spec:
+      containers:
+      - name: dns-kontrol
+        image: busybox
+        args:
+          - /bin/sh
+          - -c
+          - sleep 30; date; ping -c 3 -A 8.8.8.8; echo Ping Görevi tamam;date '+%A, %B %d, %Y'  
+      restartPolicy: Never    

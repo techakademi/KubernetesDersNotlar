@@ -11,3 +11,5 @@
 ## 4. Ders [Node Selector](https://github.com/techakademi/KubernetesDersNotlar/tree/main/04-Nodeselector)
 
 ## 5. Ders [Daemonset](https://github.com/techakademi/KubernetesDersNotlar/tree/main/05-Daemonset)
+
+## 6. Ders [Jobs-Cronjobs](https://github.com/techakademi/KubernetesDersNotlar/tree/main/06-Jobs-Cronjobs)
