@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kbm-deploy
+  labels:
+    name: Kube-Merhaba
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: Kube-Merhaba
+  template:
+    metadata:
+      labels:
+        name: Kube-Merhaba
+    spec:
+      initContainers:
+      - name: httpd-kontrol
+        image: techakademi/init1
+      - name: git-kontrol
+        image: techakademi/init2
+      - name: clone-repo
+        image: alpine/git
+        command:
+          - git
+          - clone
+          - --progress
+          - https://github.com/techakademi/merhaba_kube.git
+          - /usr/share/nginx/html
+        volumeMounts:
+          - name: websitesi
+            mountPath: "/usr/share/nginx/html"
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+          - name: http
+            containerPort: 80
+        volumeMounts:
+          - name: web
+            mountPath: "/usr/share/nginx/html"
+      volumes:
+        - name: web
+          emptyDir: {}

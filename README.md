@@ -13,3 +13,5 @@
 ## 5. Ders [Daemonset](https://github.com/techakademi/KubernetesDersNotlar/tree/main/05-Daemonset)
 
 ## 6. Ders [Jobs-Cronjobs](https://github.com/techakademi/KubernetesDersNotlar/tree/main/06-Jobs-Cronjobs)
+
+## 7. Ders [Init-Container](https://github.com/techakademi/KubernetesDersNotlar/tree/main/07-Init-container)
