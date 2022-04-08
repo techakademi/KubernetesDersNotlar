@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: veri-pod
+spec:
+  volumes:
+    - name: pv-verideposu
+      persistentVolumeClaim:
+        claimName: pv-hostpath-yerel
+  containers:
+  - image: debian:9-slim
+    name: veri-olusturan-konteyner
+    command: ["/bin/sleep"]
+    args: ["3600"]
+    volumeMounts:
+      - name: pv-verideposu
+        mountPath: "/veridosyam"

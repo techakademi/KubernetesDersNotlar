@@ -15,3 +15,5 @@
 ## 6. Ders [Jobs-Cronjobs](https://github.com/techakademi/KubernetesDersNotlar/tree/main/06-Jobs-Cronjobs)
 
 ## 7. Ders [Init-Container](https://github.com/techakademi/KubernetesDersNotlar/tree/main/07-Init-container)
+
+## 8. Ders [Volume](https://github.com/techakademi/KubernetesDersNotlar/tree/main/08-Volume)
