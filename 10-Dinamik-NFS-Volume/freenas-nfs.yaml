@@ -1,0 +1,121 @@
+csiDriver:
+  # should be globally unique for a given cluster
+  name: "org.democratic-csi.nfs"
+
+# add note here about volume expansion requirements
+storageClasses:
+- name: freenas-nfs-csi
+  defaultClass: false
+  reclaimPolicy: Delete
+  volumeBindingMode: Immediate
+  allowVolumeExpansion: true
+  parameters:
+    # for block-based storage can be ext3, ext4, xfs
+    # for nfs should be nfs
+    fsType: nfs
+      
+    # if true, volumes created from other snapshots will be
+    # zfs send/received instead of zfs cloned
+    # detachedVolumesFromSnapshots: "false"
+    
+    # if true, volumes created from other volumes will be
+    # zfs send/received instead of zfs cloned
+    # detachedVolumesFromVolumes: "false"
+
+  mountOptions:
+  - noatime
+  - nfsvers=4
+  secrets:
+    provisioner-secret:
+    controller-publish-secret:
+    node-stage-secret:
+    node-publish-secret:
+    controller-expand-secret:
+
+# if your cluster supports snapshots you may enable below
+volumeSnapshotClasses: []
+#- name: freenas-nfs-csi
+#  parameters:
+#  # if true, snapshots will be created with zfs send/receive
+#  # detachedSnapshots: "false"
+#  secrets:
+#    snapshotter-secret:
+
+driver:
+  config:
+    # please see the most up-to-date example of the corresponding config here:
+    # https://github.com/democratic-csi/democratic-csi/tree/master/examples
+    # YOU MUST COPY THE DATA HERE INLINE!
+    driver: freenas-nfs
+    instance_id:
+    httpConnection:
+      protocol: http
+      host: 192.168.1.76
+      port: 80
+      # This is the API key that we generated previously
+      apiKey: 1-Ar0tGmUox3Yi6jnb6ekxoRdP2grTAATeZ9eiybZeoKC8mKteGbGP9njrf3nch9ik
+      username: root
+      allowInsecure: true
+      apiVersion: 2
+    sshConnection:
+      host: 192.168.1.76
+      port: 22
+      username: root
+      # This is the SSH key that we generated for passwordless authentication
+      privateKey: |
+        -----BEGIN OPENSSH PRIVATE KEY-----
+        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
+        -----END OPENSSH PRIVATE KEY-----
+    zfs:
+      # Make sure to use the storage pool that was created previously
+      datasetParentName: HardDisk/K8s/NFS/volumelar
+      detachedSnapshotsDatasetParentName: HardDisk/K8s/NFS/snaps
+      datasetEnableQuotas: true
+      datasetEnableReservation: false
+      datasetPermissionsMode: "0777"
+      datasetPermissionsUser: root
+      datasetPermissionsGroup: wheel
+    nfs:
+      shareHost: 192.168.1.76
+      shareAlldirs: false
+      shareAllowedHosts: []
+      shareAllowedNetworks: []
+      shareMaprootUser: root
+      shareMaprootGroup: wheel
+      shareMapallUser: ""
+      shareMapallGroup: ""

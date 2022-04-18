@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: log-pod
+spec:
+  volumes:
+    - name: loglama-verideposu
+      persistentVolumeClaim:
+        claimName: dinamik-claim-nfs-log
+  containers:
+  - name: loglama-podu
+    image: alpine
+    args: 
+    - /bin/sh
+    - -c
+    - >
+      i=0;
+      while true;
+      do
+        echo "$i: $(date) $HOSTNAME" >> /var/log/log-pod.log;
+        i=$((i+1));
+        sleep 10;
+      done
+    volumeMounts:
+      - name: loglama-verideposu
+        mountPath: /var/log

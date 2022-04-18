@@ -17,3 +17,9 @@
 ## 7. Ders [Init-Container](https://github.com/techakademi/KubernetesDersNotlar/tree/main/07-Init-container)
 
 ## 8. Ders [Volume](https://github.com/techakademi/KubernetesDersNotlar/tree/main/08-Volume)
+
+## 9. Ders [NFS-Volume](https://github.com/techakademi/KubernetesDersNotlar/tree/main/09-NFS-Volume)
+
+## 10. Ders [NFS-Volume](https://github.com/techakademi/KubernetesDersNotlar/tree/main/10-Dinamik-NFS-Volume)
+
+## 11. Ders [NFS-Volume](https://github.com/techakademi/KubernetesDersNotlar/tree/main/11-Secrets)

@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-hst-deploy
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: nginx-hst-deploy
+  template:
+    metadata:
+      labels:
+        name: nginx-hst-deploy
+    spec:
+      volumes: 
+      - name: www
+        persistentVolumeClaim:
+          claimName: pv-nfs-hostdizin
+      containers:
+      - image: nginx
+        name: nginx
+        volumeMounts:
+        - name: www
+          mountPath: /usr/share/nginx/html
