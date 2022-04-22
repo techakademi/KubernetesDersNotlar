@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: adres-map
+  namespace: default
+data:
+  adres.cfg: |
+      1.0.0.1
+      8.8.4.4

@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: adres-test-pod-belge
+spec:
+  containers:
+    - name: configmap-container
+      image: techakademi/pinger:1
+      command: ["/bin/sh"]
+      args: ["-c", "sleep 3600"]
+      volumeMounts:
+      - name: config-volume
+        mountPath: "/pinger/"
+  volumes:
+    - name: config-volume
+      configMap:
+        name: adres-map-belge
+  restartPolicy: Never

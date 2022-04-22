@@ -22,4 +22,6 @@
 
 ## 10. Ders [NFS-Volume](https://github.com/techakademi/KubernetesDersNotlar/tree/main/10-Dinamik-NFS-Volume)
 
-## 11. Ders [NFS-Volume](https://github.com/techakademi/KubernetesDersNotlar/tree/main/11-Secrets)
+## 11. Ders [Secrets](https://github.com/techakademi/KubernetesDersNotlar/tree/main/11-Secrets)
+
+## 12. Ders [Configmap](https://github.com/techakademi/KubernetesDersNotlar/tree/main/12-Configmap)

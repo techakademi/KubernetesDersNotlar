@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: merhabamap-env-pod
+spec:
+  containers:
+    - name: configmap-konteyneri
+      image: busybox
+      command: ["/bin/sh", "-c", "sleep 600"]
+      envFrom:
+      - configMapRef:
+          name: merhaba-map

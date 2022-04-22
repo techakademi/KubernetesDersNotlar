@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dns-map
+  namespace: default
+data:
+  dns1: 1.1.1.1
+  dns2: 8.8.8.8

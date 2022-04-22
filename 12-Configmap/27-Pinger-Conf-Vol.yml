@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: adres-test-pod
+spec:
+  containers:
+    - name: configmap-container
+      image: techakademi/pinger:1
+      imagePullPolicy: Always
+      volumeMounts:
+      - name: config-volume
+        mountPath: "/pinger/"
+  volumes:
+    - name: config-volume
+      configMap:
+        name: adres-map
+  restartPolicy: Never
