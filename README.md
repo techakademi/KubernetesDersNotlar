@@ -25,3 +25,5 @@
 ## 11. Ders [Secrets](https://github.com/techakademi/KubernetesDersNotlar/tree/main/11-Secrets)
 
 ## 12. Ders [Configmap](https://github.com/techakademi/KubernetesDersNotlar/tree/main/12-Configmap)
+
+## 13. Ders [Wrp-Proje](https://github.com/techakademi/KubernetesDersNotlar/tree/main/13-Wrp-Proje)

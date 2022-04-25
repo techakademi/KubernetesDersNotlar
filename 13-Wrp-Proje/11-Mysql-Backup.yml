@@ -1,0 +1,45 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: mysql-yedekleme
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    spec:
+      backoffLimit: 1   # Görev'de çalışan Pod'un kaç sefer başarısız olma töleransını tanımlıyoruz.
+      ttlSecondsAfterFinished: 20 # Görevin tamamlanmasının ardından, ne kadar süre sonra bu göreve bağlı podların silineceğini belirliyoruz. 
+      template:
+        spec:
+          volumes:
+          - name: mysql-yedek-veribirimi
+            persistentVolumeClaim:
+              claimName: mysql-yedek-pv-claim
+          containers:
+          - name: mysql-yedekleme
+            image: techakademi/mydbyedek:latest
+            imagePullPolicy: Always
+            env:
+            - name: VTB_SUNUCU
+              valueFrom:
+                configMapKeyRef:
+                    name: wordpress-config
+                    key: mysql.db.host
+            - name: VTB_KULLANICI
+              valueFrom:
+                secretKeyRef:
+                  name: wrprss-mysql
+                  key: mysql-rootuser          
+            - name: VTB_PAROLA
+              valueFrom:
+                secretKeyRef:
+                  name: wrprss-mysql
+                  key: mysql-root-password
+            - name: VTB_AD
+              value: kubeblog
+            volumeMounts:
+            - name: mysql-yedek-veribirimi
+              mountPath: /mysqlyedek
+          restartPolicy: OnFailure
+  concurrencyPolicy: "Forbid"     # Bu CronJob'un eş zamanlı yürütülmesi politikasını belirliyoruz. 
+  successfulJobsHistoryLimit: 3   # CronJob'un başarıyla tamamlanmış olan görevlerin kaç adet geçmişini saklayacağımızı belirliyoruz.
+  failedJobsHistoryLimit: 3       # CronJob'un başarısız olmuş olan görevlerin kaç adet geçmişini saklayacağımızı belirliyoruz.

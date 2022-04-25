@@ -1,0 +1,12 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: mysql-client
+  labels:
+    name: mysql-client
+spec:
+  containers:
+  - name: mysql-client
+    image: techakademi/mysql-client:1
+    imagePullPolicy: Always
+    command: ["sleep", "1000"]

@@ -1,0 +1,35 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: wordpress-yedekleme
+spec:
+  schedule: "*/3 * * * *"
+  jobTemplate:
+    spec:
+      backoffLimit: 1
+      ttlSecondsAfterFinished: 20
+      template:
+        spec:
+          volumes:
+          - name: wordpress-veribirimi
+            persistentVolumeClaim:
+              claimName: wp-pv-claim
+          - name: wordpress-yedek-veribirimi
+            persistentVolumeClaim:
+              claimName: wrprss-yedek-pv-claim
+          containers:
+          - name: wrprss-yedekleme
+            image: alpine:3.15
+            imagePullPolicy: Always
+            command: ["/bin/sh", "-c"]
+            args: 
+              - tar -czvf /yedek/wrprss/wordpress_$(date '+%d-%m-%y').tar.gz  /var/www/html
+            volumeMounts:
+            - name: wordpress-veribirimi
+              mountPath: /var/www/html
+            - name: wordpress-yedek-veribirimi
+              mountPath: /yedek/wrprss
+          restartPolicy: OnFailure
+  concurrencyPolicy: "Forbid"
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
