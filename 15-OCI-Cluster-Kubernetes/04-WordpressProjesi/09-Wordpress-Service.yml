@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: wordpress-servisi
+  labels:
+    app: wordpress
+spec:
+  ports:
+    - port: 80
+      name: wordpress
+  selector:
+    app: wordpress
+    tier: frontend
+  type: NodePort

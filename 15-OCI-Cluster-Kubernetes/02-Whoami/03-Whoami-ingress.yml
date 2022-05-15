@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nginx-whoami-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: whoami.techakademi.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: whoami-servisi
+            port:
+              number: 80

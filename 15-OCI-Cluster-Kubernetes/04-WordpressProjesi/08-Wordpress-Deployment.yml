@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wordpress
+  labels:
+    environment: egitim # Wordpress podunun eğitim ortamında çalıştığını belirttiğim etiket.
+    tier: frontend #Uygulamanın önyüz uygulaması olduğunu belirttiğim etiket.
+    app: wordpress #Uygulama türünü belirttiğim etiket.
+    component: cms # Uygulama bileşeninin türünü belirttiğim etiket.
+    part-of: mysql #Veritabanının hangi uygulamanınn parçası olduğunu belirtiğim etiket.
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: wordpress
+      tier: frontend
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: wordpress
+        tier: frontend
+    spec:
+      volumes:
+      - name: wordpress-veribirimi
+        persistentVolumeClaim:
+          claimName: wp-pv-claim
+      containers:
+      - image: wordpress:5.9-apache
+        name: wordpress-pod
+        ports:
+        - containerPort: 80
+          name: wordpress
+        env:
+        - name: WORDPRESS_DB_HOST
+          valueFrom:
+            configMapKeyRef:
+                name: wordpress-config
+                key: mysql.db.host
+        - name: WORDPRESS_DB_NAME
+          valueFrom:
+            configMapKeyRef:
+                name: wordpress-config
+                key: mysql.db.name
+        - name: WORDPRESS_TABLE_PREFIX
+          valueFrom:
+            configMapKeyRef:
+                name: wordpress-config
+                key: mysql.db.prefix
+        - name: WORDPRESS_DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: wrprss-mysql
+              key: mysql-username
+        - name: WORDPRESS_DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: wrprss-mysql
+              key: mysql-password
+        volumeMounts:
+        - name: wordpress-veribirimi
+          mountPath: /var/www/html
+      

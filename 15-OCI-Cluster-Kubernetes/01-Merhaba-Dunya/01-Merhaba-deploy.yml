@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: merhaba-dunya
+spec:
+  selector:
+    matchLabels:
+      app: merhaba-dunya
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: merhaba-dunya
+    spec:
+      containers:
+      - name: merhaba-konteyneri
+        image: myoung34/armhf-hello-kubernetes:latest

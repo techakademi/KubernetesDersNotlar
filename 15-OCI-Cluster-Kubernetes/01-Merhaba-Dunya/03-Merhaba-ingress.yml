@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nginx-merhaba-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: merhaba.techakademi.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: merhaba-servisi
+            port:
+              number: 80

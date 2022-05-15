@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: whoami-deploymenti
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: whoami-deploymenti
+  template:
+    metadata:
+      labels:
+        app: whoami-deploymenti
+    spec:
+      containers:
+      - name: whoami-konteyneri
+        image: containous/whoami
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: whoami-servisi
+spec:
+  type: NodePort
+  ports:
+  - name: http
+    targetPort: 80
+    port: 80
+  selector:
+    app: whoami
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nginx-whoami-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: whoami.techakademi.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: whoami-servisi
+            port:
+              number: 80

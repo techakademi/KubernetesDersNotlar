@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: ssl-sertifika-staging
+  namespace: default
+spec:
+  secretName: ssl-sertifika-staging
+  dnsNames:
+  - www.cloudtechakademi.com
+  issuerRef:
+    name: letsencrypt-staging
+    kind: ClusterIssuer
+  

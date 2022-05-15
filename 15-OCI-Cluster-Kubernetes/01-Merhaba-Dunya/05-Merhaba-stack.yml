@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: merhaba-dunya
+spec:
+  selector:
+    matchLabels:
+      app: merhaba-dunya
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: merhaba-dunya
+    spec:
+      containers:
+      - name: merhaba-konteyneri
+        image: myoung34/armhf-hello-kubernetes:latest
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: merhaba-servisi
+  labels:
+    app: merhaba-dunya
+spec:
+  type: NodePort
+  selector:
+    app: merhaba-dunya
+  ports:
+  - port: 80
+    targetPort: 8080
+    protocol: TCP
