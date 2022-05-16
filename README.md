@@ -27,5 +27,3 @@
 ## 12. Ders [Configmap](https://github.com/techakademi/KubernetesDersNotlar/tree/main/12-Configmap)
 
 ## 13. Ders [Wrp-Proje](https://github.com/techakademi/KubernetesDersNotlar/tree/main/13-Wrp-Proje)
-
-## 15. Ders [OCI-Kubernetes](https://github.com/techakademi/KubernetesDersNotlar/tree/main/15-OCI-Cluster-Kubernetes)
